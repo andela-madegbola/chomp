@@ -43,6 +43,8 @@ group :development, :test do
   gem 'byebug'
 
   gem 'activerecord-reset-pk-sequence', '~> 0.2.0'
+
+  gem 'rspec-rails', '~> 3.5'
 end
 
 group :development do

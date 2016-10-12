@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   get 'users/new'
   root 'pages#index'
   get 'help'    => 'pages#help'
+  get 'dashboard'    => 'pages#dashboard'
   get 'about'   => 'pages#about'
   get 'contact' => 'pages#contact'
   get 'signup'  => 'users#new'

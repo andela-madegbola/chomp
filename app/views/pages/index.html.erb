@@ -26,28 +26,47 @@
     <a href="" class="extlink" target="blank"><span id="chopped"></span></a>
   </div>
 
-  <% if Url.present? %>
-    <div class="row">
-      <div class="col-sm-5 well">
-        <h1 class="center">
-          Popular Links
-        </h1>
-        <ul>
-          <% @popular_urls.each do |url| %>
-            <li><%= link_to request.base_url + "/" + url.slug, request.base_url + "/" + url.slug, target: 'blank' %></li>
-          <% end %>
-        </ul>
+  <div class="ratings">
+    <% if Url.present? %>
+      <div class="row col-sm-12">
+
+        <div class="col-sm-4 well">
+          <h1 class="center">
+            Popular Links
+          </h1>
+          <ul>
+            <% @popular_urls.each do |url| %>
+              <li><%= link_to request.base_url + "/" + url.slug, request.base_url + "/" + url.slug, target: 'blank' %></li>
+              <hr>
+            <% end %>
+          </ul>
+        </div>
+
+        <div class="col-sm-4 well">
+          <h1 class="center">
+            Recent Links
+          </h1>
+          <ul>
+            <% @recent_urls.each do |url| %>
+              <li><%= link_to request.base_url + "/" + url.slug, request.base_url + "/" + url.slug, target: 'blank' %></li>
+              <hr>
+            <% end %>
+          </ul>
+        </div>
+
+        <div class="col-sm-4 well">
+          <h1 class="center">
+            Popular Users
+          </h1>
+          <ul>
+            <% @recent_urls.each do |url| %>
+              <li><%= link_to request.base_url + "/" + url.slug, request.base_url + "/" + url.slug, target: 'blank' %></li>
+              <hr>
+            <% end %>
+          </ul>
+        </div>
+
       </div>
-      <div class="col-sm-5 well pull-right">
-        <h1 class="center">
-          Recent Links
-        </h1>
-        <ul>
-          <% @recent_urls.each do |url| %>
-            <li><%= link_to request.base_url + "/" + url.slug, request.base_url + "/" + url.slug, target: 'blank' %></li>
-          <% end %>
-        </ul>
-      </div>
-    </div>
-  <% end %>
+    <% end %>
+  </div>
 </div>
