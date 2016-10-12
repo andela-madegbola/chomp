@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  target: MyString
+  slug: MyString
+  frequency: 1
+  user_id: 
+
+two:
+  target: MyString
+  slug: MyString
+  frequency: 1
+  user_id: 
