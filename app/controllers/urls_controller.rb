@@ -22,7 +22,7 @@ class UrlsController < ApplicationController
     Url.all.detect do |url|
       if url.target == new_target
         url.frequency = url.frequency + 1
-        url.slug = find_or_create_slug(@slug) unless url.slug
+        url.slug = find_or_create_slug(@slug)
         @url = url if url.save
       end
     end

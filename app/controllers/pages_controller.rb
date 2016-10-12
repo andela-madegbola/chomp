@@ -9,4 +9,8 @@ class PagesController < ApplicationController
 
   def about
   end
+
+  def dashboard
+    @my_urls = Url.my_urls(current_user)
+  end
 end
