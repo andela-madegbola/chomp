@@ -2,7 +2,7 @@ class UrlsController < ApplicationController
 
   def new
     target_url = params[:target]
-    @vanity = params[:vanity]
+    @slug = params[:slug]
     new_target = 'http://' + target_url if target_url[0..3] != 'http'
     if Url.all.empty?
       create(new_target)
@@ -13,27 +13,28 @@ class UrlsController < ApplicationController
 
   def create(new_target)
     @url = Url.new(target: new_target)
-    # binding.pry
-    if @vanity.present?
-      @url.slug = @vanity
-    else
-      @url.slug = SecureRandom.hex(3)
-    end
-    # binding.pry
+    @url.slug = find_or_create_slug(@slug)
     @url.user_id = current_user.id if current_user
     @url.save
   end
 
   def update_frequency(new_target)
-    binding.pry
     Url.all.detect do |url|
       if url.target == new_target
-        new_frequency = url.frequency + 1
-        @url = url if url.update(frequency: new_frequency)
+        url.frequency = url.frequency + 1
+        url.slug = find_or_create_slug(@slug) unless url.slug
+        @url = url if url.save
       end
     end
-    binding.pry
     create(new_target) unless @url
+  end
+
+  def find_or_create_slug(slug)
+    if slug.present?
+      slug
+    else
+      SecureRandom.hex(3)
+    end
   end
 
   def navigate

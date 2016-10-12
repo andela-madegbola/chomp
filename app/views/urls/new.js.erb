@@ -1,2 +1,2 @@
-$('.extlink').text("<%= request.base_url + "/" + @url.slug %>");
+$('.extlink').html("<%= request.base_url + "/" + @url.slug %>");
 $('.extlink').attr("href" , "<%= request.base_url + "/" + @url.slug %>");
