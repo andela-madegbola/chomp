@@ -9,7 +9,7 @@ class User < ActiveRecord::Base
   has_secure_password
   validates :password, presence: true, length: { minimum: 6 }
 
-  # has_many :urls, :exorder => "urls.slug DESC"
+  has_many :urls
 
 
 end

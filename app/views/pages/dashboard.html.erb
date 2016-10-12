@@ -18,7 +18,7 @@
           <% @my_urls.each do |url| %>
             <tr>
                 <td><%= url.target %></td>
-                <td><%= request.base_url + url.slug %></td>
+                <td><%= request.base_url + "/" + url.slug %></td>
                 <td><%= url.frequency %></td>
                 <td><%= url.created_at.strftime("%e %b %Y, %H:%M:%S%p") %></td>
                 <td><%= url.updated_at.strftime("%e %b %Y, %H:%M:%S%p") %></td>
