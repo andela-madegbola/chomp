@@ -1,4 +1,3 @@
-<a href="https://codeclimate.com/github/andela-madegbola/chomp"><img src="https://codeclimate.com/github/andela-madegbola/chomp/badges/gpa.svg" /></a> <a href="https://codeclimate.com/github/andela-madegbola/chomp/coverage"><img src="https://codeclimate.com/github/andela-madegbola/chomp/badges/coverage.svg" /></a> <a href="https://codeclimate.com/github/andela-madegbola/chomp"><img src="https://codeclimate.com/github/andela-madegbola/chomp/badges/issue_count.svg" /></a>
 
 # Chomp
 
