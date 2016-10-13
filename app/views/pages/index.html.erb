@@ -17,7 +17,7 @@
       <% end %>
       <br><br><br>
       <div class="row col-sm-2 col-sm-offset-5">
-        <%= submit_tag "Shot it", { class: "btn btn-primary" }%>
+        <%= submit_tag "Chomp", { class: "btn btn-primary" }%>
       </div>
     <% end %>
   </div>
@@ -42,7 +42,7 @@
           </ul>
         </div>
 
-        <div class="col-sm-4 well">
+        <div class="col-sm-4 well pull-right">
           <h1 class="center">
             Recent Links
           </h1>
@@ -53,20 +53,6 @@
             <% end %>
           </ul>
         </div>
-
-        <div class="col-sm-4 well">
-          <h1 class="center">
-            Popular Users
-          </h1>
-          <ul>
-            <% @recent_urls.each do |url| %>
-              <li><%= link_to request.base_url + "/" + url.slug, request.base_url + "/" + url.slug, target: 'blank' %></li>
-              <hr>
-            <% end %>
-          </ul>
-        </div>
-
-      </div>
     <% end %>
   </div>
 </div>
