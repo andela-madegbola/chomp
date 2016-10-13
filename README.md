@@ -1,3 +1,5 @@
+<a href="https://codeclimate.com/github/andela-madegbola/chomp"><img src="https://codeclimate.com/github/andela-madegbola/chomp/badges/gpa.svg" /></a> <a href="https://codeclimate.com/github/andela-madegbola/chomp/coverage"><img src="https://codeclimate.com/github/andela-madegbola/chomp/badges/coverage.svg" /></a> <a href="https://codeclimate.com/github/andela-madegbola/chomp"><img src="https://codeclimate.com/github/andela-madegbola/chomp/badges/issue_count.svg" /></a>
+
 # Chomp
 
 Chomp tries to replicate the [bitly](https://www.bit.ly) url shortener service.
@@ -49,6 +51,7 @@ To test the web application, run the following command to carry out all tests:
 1. Users are not able to sign up with Open ID.
 2. Profile management by users is not available yet.
 3. Registered users cannot set shortened URL to be inactive or delete URL altogether.
+4. Can't verify validity of users' urls.
 
 ## Contributing
 
