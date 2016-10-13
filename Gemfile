@@ -29,7 +29,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
 
-
+gem "codeclimate-test-reporter", group: :test, require: nil
 
 # Use Unicorn as the app server
 # gem 'unicorn'
@@ -58,8 +58,6 @@ group :development, :test do
   gem 'shoulda-matchers', '~> 3.1', '>= 3.1.1'
 
   gem 'faker', '~> 1.6', '>= 1.6.6'
-
-  gem "codeclimate-test-reporter", group: :test, require: nil
 end
 
 group :development do
@@ -75,4 +73,3 @@ end
 group :production do
   gem 'pg', '~> 0.19.0'
 end
-
