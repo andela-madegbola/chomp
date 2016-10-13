@@ -17,7 +17,9 @@ RSpec.describe SessionsController do
 
   describe "POST #create" do
     context "when user enters correct login details" do
-      let(:create_action) { post :create, email: user.email, password: user.password }
+      let(:create_action) do
+        post :create, email: user.email, password: user.password
+      end
 
       it "should flash success message " do
         expect(:success).to be_present
@@ -33,7 +35,9 @@ RSpec.describe SessionsController do
     end
 
     context "when user enters correct details" do
-      let(:create_action) { post :create, email: "gjdfhfkd@yahoo.com", password: "dude" }
+      let(:create_action) do
+        post :create, email: "gjdfhfkd@yahoo.com", password: "dude"
+      end
 
       it "should flash success message " do
         expect(:danger).to be_present

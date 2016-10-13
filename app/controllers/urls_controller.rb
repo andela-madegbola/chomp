@@ -1,9 +1,8 @@
 class UrlsController < ApplicationController
-
   def new
     target_url = params[:target]
     @slug = params[:slug]
-    new_target = 'http://' + target_url if target_url[0..3] != 'http'
+    new_target = "http://" + target_url if target_url[0..3] != "http"
     if Url.all.empty?
       create(new_target)
     else
@@ -20,11 +19,10 @@ class UrlsController < ApplicationController
 
   def update_frequency(new_target)
     Url.all.detect do |url|
-      if url.target == new_target
-        url.frequency = url.frequency + 1
-        url.slug = find_or_create_slug(@slug)
-        @url = url if url.save
-      end
+      next unless url.target == new_target
+      url.frequency = url.frequency + 1
+      url.slug = find_or_create_slug(@slug)
+      @url = url if url.save
     end
     create(new_target) unless @url
   end
