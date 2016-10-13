@@ -1,3 +1,4 @@
+[![Code Climate](https://codeclimate.com/github/andela-madegbola/chomp/badges/gpa.svg)](https://codeclimate.com/github/andela-madegbola/chomp) [![Test Coverage](https://codeclimate.com/github/andela-madegbola/chomp/badges/coverage.svg)](https://codeclimate.com/github/andela-madegbola/chomp/coverage) [![Issue Count](https://codeclimate.com/github/andela-madegbola/chomp/badges/issue_count.svg)](https://codeclimate.com/github/andela-madegbola/chomp)
 
 # Chomp
 
