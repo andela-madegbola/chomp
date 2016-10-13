@@ -42,9 +42,23 @@ group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
 
+  gem 'pry', '~> 0.10.3'
+
+  gem 'pry-rails', '~> 0.3.4'
+
+  gem 'pry-nav', '~> 0.2.4'
+
   gem 'activerecord-reset-pk-sequence', '~> 0.2.0'
 
   gem 'rspec-rails', '~> 3.5'
+
+  gem 'capybara', '~> 2.7', '>= 2.7.1'
+
+  gem 'factory_girl_rails', '~> 4.7'
+
+  gem 'shoulda-matchers', '~> 3.1', '>= 3.1.1'
+
+  gem 'faker', '~> 1.6', '>= 1.6.6'
 end
 
 group :development do
@@ -53,11 +67,5 @@ group :development do
 
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
-
-  gem 'pry', '~> 0.10.3'
-
-  gem 'pry-rails', '~> 0.3.4'
-
-  gem 'pry-nav', '~> 0.2.4'
 end
 

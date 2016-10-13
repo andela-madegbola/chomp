@@ -1,15 +1,19 @@
 Rails.application.routes.draw do
   resources :users
-  get 'users/new'
   root 'pages#index'
   get 'help'    => 'pages#help'
   get 'dashboard'    => 'pages#dashboard'
+
   get 'about'   => 'pages#about'
   get 'contact' => 'pages#contact'
+
   get 'signup'  => 'users#new'
+  post "/users" => "users#create"
+
   get    'login'   => 'sessions#new'
   post   'login'   => 'sessions#create'
   delete 'logout'  => 'sessions#destroy'
+
   post 'urls/new' => 'urls#new'
   get "/:slug" => "urls#navigate"
 

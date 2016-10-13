@@ -4,7 +4,7 @@ class UrlsController < ApplicationController
     target_url = params[:target]
     @slug = params[:slug]
     new_target = 'http://' + target_url if target_url[0..3] != 'http'
-    if Url.all.empty?
+    if Url.empty?
       create(new_target)
     else
       update_frequency(new_target)
