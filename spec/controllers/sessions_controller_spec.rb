@@ -34,20 +34,20 @@ RSpec.describe SessionsController do
       end
     end
 
-    context "when user enters correct details" do
+    context "when user enters incorrect details" do
       let(:create_action) do
         post :create, email: "gjdfhfkd@yahoo.com", password: "dude"
       end
 
-      it "should flash success message " do
+      it "should flash failure message " do
         expect(:danger).to be_present
       end
 
-      it "should redirect to home page " do
+      it "should render home page " do
         expect(create_action).to render_template(:new)
       end
 
-      it "should redirect to home page " do
+      it "should render home page " do
         expect(create_action).to have_http_status(200)
       end
     end

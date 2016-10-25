@@ -4,6 +4,8 @@
 
 Chomp tries to replicate the [bitly](https://www.bit.ly) url shortener service.
 
+To use, visit http://chompurl.herokuapp.com
+
 
 ## Features
 
