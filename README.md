@@ -1,8 +1,10 @@
-<a href="https://codeclimate.com/github/andela-madegbola/chomp"><img src="https://codeclimate.com/github/andela-madegbola/chomp/badges/gpa.svg" /></a> <a href="https://codeclimate.com/github/andela-madegbola/chomp/coverage"><img src="https://codeclimate.com/github/andela-madegbola/chomp/badges/coverage.svg" /></a> <a href="https://codeclimate.com/github/andela-madegbola/chomp"><img src="https://codeclimate.com/github/andela-madegbola/chomp/badges/issue_count.svg" /></a>
+[![Code Climate](https://codeclimate.com/github/andela-madegbola/chomp/badges/gpa.svg)](https://codeclimate.com/github/andela-madegbola/chomp) [![Test Coverage](https://codeclimate.com/github/andela-madegbola/chomp/badges/coverage.svg)](https://codeclimate.com/github/andela-madegbola/chomp/coverage) [![Issue Count](https://codeclimate.com/github/andela-madegbola/chomp/badges/issue_count.svg)](https://codeclimate.com/github/andela-madegbola/chomp)
 
 # Chomp
 
 Chomp tries to replicate the [bitly](https://www.bit.ly) url shortener service.
+
+To use, visit http://chompurl.herokuapp.com
 
 
 ## Features
