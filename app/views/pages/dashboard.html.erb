@@ -1,33 +1,37 @@
-<div class="container">
-  <% if @my_urls.present? %>
-  <div class="jumbotron">
-    <div class="table-responsive links-table">
-      <table class="table table-striped table-bordered responsive no-wrap">
+<div class="row col-sm-12">
+  <div class="col-sm-6">
 
-        <thead>
-          <tr>
-            <th>Original Url</th>
-            <th>Shortened Url</th>
-            <th>Frequency</th>
-            <th>Date Created</th>
-            <th>Date Updated</th>
-          </tr>
-        </thead>
+    <div class="jumbotron">
+      <% if @my_urls.present? %>
+      <div class="table-responsive links-table">
+        <table class="table table-striped table-bordered responsive no-wrap">
 
-        <tbody>
-          <% @my_urls.each do |url| %>
+          <li><h5 class="login-text">My URLs</h5></li>
+          <thead>
             <tr>
-                <td><%= url.target %></td>
-                <td><%= request.base_url + "/" + url.slug %></td>
-                <td><%= url.frequency %></td>
-                <td><%= url.created_at.strftime("%e %b %Y, %H:%M:%S%p") %></td>
-                <td><%= url.updated_at.strftime("%e %b %Y, %H:%M:%S%p") %></td>
+              <th>Url</th>
+              <th>Date Created</th>
             </tr>
-          <% end %>
-        </tbody>
+          </thead>
 
-      </table>
+          <tbody>
+            <% @my_urls.each do |url| %>
+              <tr>
+                <td><%= link_to url.title, url_path(url), remote: true%></td>
+                <td><%= time_ago_in_words(url.created_at)%></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+      <% else %>
+      <h3>You have no chomped urls yet</h3>
+      <%= link_to "Click to start Chomping", "root_url" %>
+      <% end %>
     </div>
   </div>
-  <% end %>
+
+  <div class="col-sm-6">
+    <div class="url-page"></div>
+  </div>
 </div>

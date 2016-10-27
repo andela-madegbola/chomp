@@ -6,11 +6,11 @@ class Url < ActiveRecord::Base
   validates_presence_of :frequency
 
   def self.popular
-    order(frequency: :desc).limit(5)
+    order(frequency: :desc).limit(4)
   end
 
   def self.recent
-    order(updated_at: :desc).limit(5)
+    order(updated_at: :desc).limit(4)
   end
 
   def self.my_urls(user)

@@ -11,15 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161011212820) do
+ActiveRecord::Schema.define(version: 20161026132330) do
 
   create_table "urls", force: :cascade do |t|
     t.string   "target"
     t.string   "slug"
-    t.integer  "frequency", default: 1, null: false
+    t.integer  "frequency",  default: 1,    null: false
     t.integer  "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+    t.string   "title"
+    t.boolean  "status",     default: true
   end
 
   add_index "urls", ["user_id"], name: "index_urls_on_user_id"
@@ -27,9 +29,10 @@ ActiveRecord::Schema.define(version: 20161011212820) do
   create_table "users", force: :cascade do |t|
     t.string   "username"
     t.string   "email"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
     t.string   "password_digest"
+    t.integer  "total_links",     default: 0
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

@@ -2,6 +2,7 @@ class PagesController < ApplicationController
   def index
     @popular_urls = Url.popular
     @recent_urls = Url.recent
+    @influential_users = User.influential
   end
 
   def contact
