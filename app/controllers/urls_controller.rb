@@ -5,10 +5,18 @@ class UrlsController < ApplicationController
     new_target = params[:target]
     @slug = params[:slug]
     new_target = "http://" + new_target if new_target[0..3] != "http"
-    if Url.all.empty?
-      create(new_target)
+    find_or_create_url(new_target)
+  end
+
+  def find_or_create_url(new_target)
+    url = Url.find_by(target: new_target)
+    if url && url.user == current_user
+      url.frequency += 1
+      url.slug = @slug if @slug
+      url.title = set_title(url.target)
+      @url = url if url.save
     else
-      update_frequency(new_target)
+      create(new_target)
     end
   end
 
@@ -31,23 +39,12 @@ class UrlsController < ApplicationController
     end
   end
 
-  def update_frequency(new_target)
-    url = Url.find_by(target: new_target)
-    if url && url.user == current_user
-      url.frequency += 1
-      url.slug = @slug if @slug
-      @url = url if url.save
-    else
-      create(new_target)
-    end
-  end
-
   def navigate
     url = Url.find_by(slug: params[:slug])
     if url && url.status
       redirect_to url.target
     else
-      redirect_to root_path, notice: "Oops, this link has been made inactive by its owner"
+      redirect_to root_path, notice: "Oops, this link is inactive"
     end
   end
 

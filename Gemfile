@@ -35,6 +35,8 @@ gem 'mechanize', '~> 2.7', '>= 2.7.5'
 
 gem 'will_paginate'
 
+gem 'will_paginate-bootstrap'
+
 # Use Unicorn as the app server
 # gem 'unicorn'
 
