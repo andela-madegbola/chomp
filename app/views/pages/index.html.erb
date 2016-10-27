@@ -29,30 +29,9 @@
   <div class="ratings">
     <% if Url.present? %>
       <div class="row col-sm-12">
-
-        <div class="col-sm-4 well">
-          <h1 class="center">
-            Popular Links
-          </h1>
-          <ul>
-            <% @popular_urls.each do |url| %>
-              <li><%= link_to request.base_url + "/" + url.slug, request.base_url + "/" + url.slug, target: 'blank' %></li>
-              <hr>
-            <% end %>
-          </ul>
-        </div>
-
-        <div class="col-sm-4 well pull-right">
-          <h1 class="center">
-            Recent Links
-          </h1>
-          <ul>
-            <% @recent_urls.each do |url| %>
-              <li><%= link_to request.base_url + "/" + url.slug, request.base_url + "/" + url.slug, target: 'blank' %></li>
-              <hr>
-            <% end %>
-          </ul>
-        </div>
+          <%= render "pages/popular_urls" %>
+          <%= render "pages/recent_urls" %>
+          <%= render "pages/influential_users" %>
     <% end %>
   </div>
 </div>

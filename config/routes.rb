@@ -15,6 +15,10 @@ Rails.application.routes.draw do
   delete 'logout'  => 'sessions#destroy'
 
   post 'urls/new' => 'urls#new'
+  get "urls/:id" => "urls#show", as: :url
+  get "urls/:id/edit" => "urls#edit", as: :edit_url
+  patch "urls/:id" => "urls#update"
+  delete "urls/:id" => "urls#destroy"
   get "/:slug" => "urls#navigate"
 
 

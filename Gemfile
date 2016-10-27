@@ -31,6 +31,10 @@ gem 'bcrypt', '~> 3.1.7'
 
 gem "codeclimate-test-reporter", group: :test, require: nil
 
+gem 'mechanize', '~> 2.7', '>= 2.7.5'
+
+gem 'will_paginate'
+
 # Use Unicorn as the app server
 # gem 'unicorn'
 

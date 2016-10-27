@@ -1,0 +1,22 @@
+<div class="jumbotron">
+  <%= form_for link do |f| %>
+    <%= f.text_field :target, required: true, class: "form-control" %>
+    <%= f.text_field :slug, required: true, class: "form-control" %>
+
+    <div class="container">
+      <div class="radio">
+        <%= f.radio_button :status, true %>
+        Active
+      </div>
+
+      <div class="radio">
+        <%= f.radio_button :status, false %>
+        Inactive
+      </div>
+    </div>
+
+    <div class="row">
+      <%= f.submit "Save Changes", class: "btn waves-effect waves-light btn-medium brand-bg white-text regular-text" %>
+    </div>
+  <% end %>
+</div>
