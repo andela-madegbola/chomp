@@ -1,6 +1,6 @@
 <div class="row col-sm-12">
-  <div class="col-sm-6">
 
+  <div class="col-sm-6">
     <div class="jumbotron">
       <% if @my_urls.present? %>
       <div class="table-responsive links-table">
@@ -26,10 +26,17 @@
       </div>
       <% else %>
       <h3>You have no chomped urls yet</h3>
-      <%= link_to "Click to start Chomping", "root_url" %>
+      <%= link_to "Click to start", root_url %>
       <% end %>
     </div>
+
+    <div class="col-sm-6">
+      <%= will_paginate @my_urls, renderer: BootstrapPagination::Rails %>
+    </div>
+
   </div>
+
+
 
   <div class="col-sm-6">
     <div class="url-page"></div>
