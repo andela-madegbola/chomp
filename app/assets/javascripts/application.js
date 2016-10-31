@@ -11,9 +11,25 @@
 // about supported directives.
 //
 //= require jquery
-//= require bootstrap-sprockets
+//= require jquery.turbolinks
+//= require jquery-ui/effect-bounce
 //= require jquery_ujs
-//= require turbolinks
+//= require bootstrap-sprockets
 //= require_tree .
+
+$(document).ready(function(){
+  setTimeout(function(){
+    $("#notice").fadeTo(500, 0).slideUp(500, function(){
+      $(this).remove();
+    });
+  }, 1000);
+})
+
+
+
+
+
+
+
 
 

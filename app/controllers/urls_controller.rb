@@ -9,15 +9,15 @@ class UrlsController < ApplicationController
   end
 
   def find_or_create_url(new_target)
-    url = Url.find_by(target: new_target)
-    if url && url.user == current_user
-      url.frequency += 1
-      url.slug = @slug if @slug
-      url.title = set_title(url.target)
-      @url = url if url.save
+    url = current_user.urls.find_by(target: new_target);
+    return create(new_target) unless url
+    if @slug.blank?
+      url.slug
     else
-      create(new_target)
+      url.slug = @slug
     end
+    url.title = set_title(url.target)
+    @url = url if url.save
   end
 
   def create(new_target)
@@ -42,9 +42,11 @@ class UrlsController < ApplicationController
   def navigate
     url = Url.find_by(slug: params[:slug])
     if url && url.status
+      url.clicks += 1
+      url.update_attribute(:clicks, url.clicks)
       redirect_to url.target
     else
-      redirect_to root_path, notice: "Oops, this link is inactive"
+      redirect_to root_path, alert: inactive_link
     end
   end
 
@@ -53,7 +55,7 @@ class UrlsController < ApplicationController
     page = scraper.get(target)
     page.title
   rescue
-    "Title could not be retrieved"
+    "Title not found"
   end
 
   def show
@@ -64,15 +66,15 @@ class UrlsController < ApplicationController
 
   def update
     if @url.update(url_params)
-      redirect_to dashboard_path, notice: "Your URL was successfully updated"
+      redirect_to dashboard_path, notice: url_update_success
     else
-      flash[:alert] = "Please review your info"
+      flash[:alert] = url_update_error
     end
   end
 
   def destroy
     if @url.destroy
-      redirect_to dashboard_path, notice: "Your URL was successfully deleted"
+      redirect_to dashboard_path, alert: url_deleted
     end
   end
 

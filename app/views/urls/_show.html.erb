@@ -1,9 +1,9 @@
 <div class="edit-info jumbotron">
-  <h5><%= link.title %></h5>
-  <p><em>Original Link: </em><%= link.target %></p>
-  <p><em>Chomped Link: </em><a href="<%= root_url + link.slug %>", target="_blank"><%= root_url + link.slug %></a></p>
-  <p><em>Clicks: </em><%= link.frequency %></p>
-  <p><em>Status: </em><%= link.status ? "Active" : "Inactive" %></p>
+  <h3><%= link.title %></h3>
+  <p><%= link.target %></p>
+  <p><a href="<%= root_url + link.slug %>", target="_blank"><%= root_url + link.slug %></a></p>
+  <p>Clicks: <%= link.clicks %></p>
+  <p>Status: <%= link.status ? "Active" : "Inactive" %></p>
 
   <div class="row">
     <%= link_to "Edit", edit_url_path(link), remote: true, class: "btn btn-primary"%>
@@ -12,6 +12,4 @@
 
     <a href="<%= root_url + link.slug %>" id= "visit-link" class="btn btn-success", target="_blank">Visit Link</a>
   </div>
-
-<!--  -->
 </div>

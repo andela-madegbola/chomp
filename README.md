@@ -13,15 +13,15 @@ Chomp is a great url shortening service built with ruby on rails. It allows user
 
 Anonymous or registered users can generate short URLs from long URLs. However, only registered users can choose a custom shortened URL.
 
-Chomp allows unlimited number of URL-shortening for users, and provides click-statistics to enable registered users keep track of how many times shortened URL has been visited.
+Chomp allows unlimited number of URL-shortening for users, and provides click-statistics to enable registered users keep track of how many times their shortened URLs have been visited.
 
 
 ## Installation
 Web application is written with Ruby using the Ruby on Rails framework.
 
-To install Ruby visit [Ruby Lang](https://www.ruby-lang.org). [v2.2.3p173]
+To install Ruby visit [Ruby Lang](https://www.ruby-lang.org). [v2.3.1]
 
-To install Rails visit [Ruby on Rails](http://rubyonrails.org/). [v4.2.4]
+To install Rails visit [Ruby on Rails](http://rubyonrails.org/). [v4.2]
 
 
 ## Using the App
@@ -51,9 +51,7 @@ To test the web application, run the following command to carry out all tests:
 
 ## Limitations
 1. Users are not able to sign up with Open ID.
-2. Profile management by users is not available yet.
-3. Registered users cannot set shortened URL to be inactive or delete URL altogether.
-4. Can't verify validity of users' urls.
+2. Can't verify validity of users' urls.
 
 ## Contributing
 

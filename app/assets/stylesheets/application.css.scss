@@ -12,6 +12,7 @@
  *
  *= require_tree .
  *= require_self
+ *
  */
 
 @import "bootstrap-sprockets";
@@ -25,13 +26,17 @@ h1 {
   text-align: center;
 }
 
+.edit-info p {
+  font-size: 14px;
+}
+
+
 /* forms */
 
 input, textarea, select, .uneditable-input {
   border: 1px solid #bbb;
   width: 100%;
   margin-bottom: 15px;
-
 }
 
 input {
@@ -73,23 +78,68 @@ input {
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
-  height : 500px
+  height : 600px
 }
 
 li {
   list-style: none;
 }
 
-.ratings {
+.statistics {
     margin-top: 300px;
 }
 
 .login-text {
   color: #0e3042;
   font-size: 1.9em;
-  font-family: Gabriola;
-  font-weight: bolder;
-  line-height: 110%;
-  margin: 2.1rem 0 1.68rem 0;
   text-align: center;
+}
+
+@media (min-width: 0px) and (max-width: 767px) {
+  .fsi-row-xs-level {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+  }
+}
+@media (min-width: 768px) and (max-width: 991px) {
+  .fsi-row-sm-level {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+  }
+}
+@media (min-width: 992px) and (max-width: 1199px) {
+  .fsi-row-md-level {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+  }
+}
+@media (min-width: 1200px) {
+  .fsi-row-lg-level {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+  }
+}
+
+div#notice>.alert{
+  font-size: 15px;
+  text-align: center;
+}
+
+ul.pagination li a {
+  color: black;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.extlink {
+  font-size: 20px;
+  color: #008cba !important;
 }

@@ -7,7 +7,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      flash[:success] = "Welcome to Chomp!"
+      flash[:success] = logged_in
       log_in(@user)
       redirect_to root_path
     else
@@ -18,16 +18,18 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
   end
-
   def edit
     @user = User.find(params[:id])
   end
 
   def update
     @user = User.find(params[:id])
-    @user.update(user_params)
-    flash[:success] = "Your user profile has been updated."
-    redirect_to root_path
+    if @user.update(user_params)
+      flash[:success] = edit_profile_success
+      redirect_to root_path
+    else
+      render "edit"
+    end
   end
 
   private
@@ -38,9 +40,9 @@ class UsersController < ApplicationController
   end
 
   def logged_in_user
-      unless logged_in?
-        flash[:danger] = "Please log in."
+    unless logged_in?
+      flash[:danger] = unauthorized_user
         redirect_to login_url
-      end
     end
+  end
 end
