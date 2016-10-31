@@ -1,6 +1,6 @@
 <div class="container-fluid">
   <% provide(:title, "Home") %>
-  <h1 class="white">Shorten your Links</h1>
+  <h1>Shorten your Links</h1>
   <div row>
     <%= form_tag({controller: 'urls', action: 'new'}, method: 'post', remote: true) do %>
       <% if current_user %>

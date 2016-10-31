@@ -8,6 +8,38 @@ class UrlsController < ApplicationController
     find_or_create_url(new_target)
   end
 
+  def navigate
+    url = Url.find_by(slug: params[:slug])
+    if url && url.status
+      url.clicks += 1
+      url.update_attribute(:clicks, url.clicks)
+      redirect_to url.target
+    else
+      redirect_to root_path, alert: inactive_link
+    end
+  end
+
+  def show
+  end
+
+  def edit
+  end
+
+  def update
+    if @url.update(url_params)
+      redirect_to dashboard_path, notice: url_update_success
+    else
+      flash[:alert] = url_update_error
+    end
+  end
+
+  def destroy
+    if @url.destroy
+      redirect_to dashboard_path, alert: url_deleted
+    end
+  end
+
+  private
   def find_or_create_url(new_target)
     url = current_user.urls.find_by(target: new_target);
     return create(new_target) unless url
@@ -39,17 +71,6 @@ class UrlsController < ApplicationController
     end
   end
 
-  def navigate
-    url = Url.find_by(slug: params[:slug])
-    if url && url.status
-      url.clicks += 1
-      url.update_attribute(:clicks, url.clicks)
-      redirect_to url.target
-    else
-      redirect_to root_path, alert: inactive_link
-    end
-  end
-
   def set_title(target)
     scraper = Mechanize.new
     page = scraper.get(target)
@@ -57,28 +78,6 @@ class UrlsController < ApplicationController
   rescue
     "Title not found"
   end
-
-  def show
-  end
-
-  def edit
-  end
-
-  def update
-    if @url.update(url_params)
-      redirect_to dashboard_path, notice: url_update_success
-    else
-      flash[:alert] = url_update_error
-    end
-  end
-
-  def destroy
-    if @url.destroy
-      redirect_to dashboard_path, alert: url_deleted
-    end
-  end
-
-  private
 
   def url_params
     params.require(:url).permit(:target, :slug, :status)

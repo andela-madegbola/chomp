@@ -6,6 +6,6 @@ RSpec.describe Url, type: :model do
   it { should be_valid }
   it { should respond_to(:target) }
   it { should respond_to(:slug) }
-  it { should respond_to(:frequency) }
+  it { should respond_to(:clicks) }
   it { should respond_to(:user) }
 end
