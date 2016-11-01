@@ -3,6 +3,7 @@ FactoryGirl.define do
     target { Faker::Internet.url }
     slug SecureRandom.hex(3)
     clicks 0
-    user
+    user nil
+    title "Title not found"
   end
 end

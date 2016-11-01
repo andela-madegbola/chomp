@@ -7,7 +7,7 @@
       <li>
         <%= url.title %>
         <br><%= link_to request.base_url + "/" + url.slug, request.base_url + "/" + url.slug, target: 'blank' %>
-        <br><em><%= time_ago_in_words(url.created_at) %> ago</em>
+        <br><em><%= time_ago_in_words(url.updated_at) %> ago</em>
       </li>
       <hr>
     <% end %>

@@ -3,6 +3,8 @@ class Url < ActiveRecord::Base
 
   validates_presence_of :target
   validates_presence_of :slug
+  validates_presence_of :title
+
 
   scope :popular, -> { order(clicks: :desc).limit(4) }
   scope :recent, -> { order(updated_at: :desc).limit(4) }

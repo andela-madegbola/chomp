@@ -2,10 +2,9 @@ require "rails_helper"
 
 RSpec.describe Url, type: :model do
   subject { build(:url) }
-
   it { should be_valid }
-  it { should respond_to(:target) }
-  it { should respond_to(:slug) }
-  it { should respond_to(:clicks) }
-  it { should respond_to(:user) }
+  it { is_expected.to respond_to(:target) }
+  it { is_expected.to respond_to(:slug) }
+  it { is_expected.to respond_to(:clicks) }
+  it { is_expected.to respond_to(:user) }
 end

@@ -41,15 +41,14 @@ class UrlsController < ApplicationController
 
   private
   def find_or_create_url(new_target)
-    url = current_user.urls.find_by(target: new_target);
-    return create(new_target) unless url
-    if @slug.blank?
-      url.slug
+    url = Url.find_by(target: new_target)
+    if url && url.user == current_user
+      url.slug ||= @slug if @slug
+      url.title = set_title(url.target)
+      @url = url if url.save
     else
-      url.slug = @slug
+      create(new_target)
     end
-    url.title = set_title(url.target)
-    @url = url if url.save
   end
 
   def create(new_target)
