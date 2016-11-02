@@ -54,22 +54,4 @@ RSpec.describe UrlsController do
       expect(response).to have_http_status(:ok)
     end
   end
-
-  describe "DELETE #destroy" do
-    let(:user) { create(:user) }
-    before do
-      create(:url, user_id: user.id)
-      session[:user_id] = 1
-    end
-
-    it "should render the 'delete' template" do
-      xhr :get, :destroy, id: 1
-      expect(response).to render_template(:edit)
-    end
-
-    it "should have have http status 200" do
-      xhr :get, :destroy, id: user.id
-      expect(response).to have_http_status(:ok)
-    end
-  end
 end
