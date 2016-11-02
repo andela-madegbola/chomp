@@ -12,6 +12,7 @@ RSpec.describe UrlsController do
 
     context "When an existing URL is entered" do
       before { create(:url, target: "http://google.com") }
+
       it "should should fetch the existing url" do
         expect { xhr :post, :new, target: "google.com" }.not_to change{ Url.count }
       end
@@ -36,7 +37,7 @@ RSpec.describe UrlsController do
     end
   end
 
-  describe "Get #edit" do
+  describe "GET #edit" do
     let(:user) { create(:user) }
     before do
       create(:url, user_id: user.id)
@@ -50,6 +51,24 @@ RSpec.describe UrlsController do
 
     it "should have have http status 200" do
       xhr :get, :edit, id: user.id
+      expect(response).to have_http_status(:ok)
+    end
+  end
+
+  describe "DELETE #destroy" do
+    let(:user) { create(:user) }
+    before do
+      create(:url, user_id: user.id)
+      session[:user_id] = 1
+    end
+
+    it "should render the 'delete' template" do
+      xhr :get, :destroy, id: 1
+      expect(response).to render_template(:edit)
+    end
+
+    it "should have have http status 200" do
+      xhr :get, :destroy, id: user.id
       expect(response).to have_http_status(:ok)
     end
   end

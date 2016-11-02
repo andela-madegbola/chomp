@@ -8,7 +8,9 @@ require "rspec/rails"
 require "capybara/rails"
 require "capybara/rspec"
 require "codeclimate-test-reporter"
+require 'simplecov'
 
+SimpleCov.start 'rails'
 CodeClimate::TestReporter.start
 # Add additional requires below this line. Rails is not loaded until this point!
 
