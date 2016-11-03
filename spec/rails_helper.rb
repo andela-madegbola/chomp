@@ -8,6 +8,7 @@ require "rspec/rails"
 require "capybara/rails"
 require "capybara/rspec"
 require 'capybara/poltergeist'
+require "database_cleaner"
 require "selenium-webdriver"
 require "codeclimate-test-reporter"
 require 'simplecov'
@@ -39,8 +40,8 @@ RSpec.configure do |config|
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
 
-  config.render_views
-  config.include MessagesHelper, type: :feature
+  # config.render_views
+
   config.include SessionsHelper, type: :controller
 
   config.include UsersHelper, type: :feature
@@ -48,7 +49,16 @@ RSpec.configure do |config|
   # If you're not using ActiveRecord, or you'd prefer not to run each of your
   # examples within a transaction, remove the following line or assign false
   # instead of true.
-  config.use_transactional_fixtures = true
+  config.use_transactional_fixtures = false
+
+  config.before(:each) do
+    DatabaseCleaner.strategy = :transaction
+    DatabaseCleaner.clean_with :truncation
+  end
+  config.after(:each) do
+    DatabaseCleaner.strategy = :transaction
+    DatabaseCleaner.clean_with :truncation
+  end
 
   # RSpec Rails can automatically mix in different behaviours to your tests
   # based on their file location, for example enabling you to call `get` and
@@ -71,9 +81,19 @@ RSpec.configure do |config|
   # config.filter_gems_from_backtrace("gem name")
   Capybara.javascript_driver = :selenium
 
-  Capybara.register_driver :selenium do |app|
-    Capybara::Selenium::Driver.new(app, :browser => :chrome)
-  end
+  # Capybara.register_driver :poltergeist do |app|
+  #   Capybara::Poltergeist::Driver.new(app, js_errors: false, inspector: true,
+  #                                          timeout: 60,
+  #                                          phantomjs: Phantomjs.path)
+  # end
+
+  # Capybara.register_driver :poltergeist do |app|
+  #   Capybara::Poltergeist::Driver.new(app, timeout: 1.minute, phantomjs_options: ['--load-images=no'])
+  # end
+
+  # Capybara.register_driver :selenium do |app|
+  #   Capybara::Selenium::Driver.new(app, :browser => :chrome)
+  # end
 end
 
 Shoulda::Matchers.configure do |config|

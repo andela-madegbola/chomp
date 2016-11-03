@@ -6,13 +6,13 @@ feature "User registration" do
     visit root_path
     fill_signup_form
 
-    expect(page).to have_content logged_in
+    expect(page).to have_content Message.logged_in
   end
 
   scenario "when registration fails" do
     visit root_path
     fill_invalid_signup_form
 
-    expect(page).to have_content username_too_long
+    expect(page).to have_content Message.username_too_long
   end
 end

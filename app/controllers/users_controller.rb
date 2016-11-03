@@ -8,7 +8,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      flash[:success] = logged_in
+      flash[:success] = Message.logged_in
       log_in(@user)
       redirect_to root_path
     else
@@ -21,7 +21,7 @@ class UsersController < ApplicationController
 
   def update
     if @user.update(user_params)
-      flash[:success] = edit_profile_success
+      flash[:success] = Message.edit_profile_success
       redirect_to root_path
     else
       render :edit
@@ -40,7 +40,7 @@ class UsersController < ApplicationController
   def authenticate_user
     @user = User.find_by(id: session[:user_id])
     return @user if @user
-    flash[:danger] = unauthorized_user
+    flash[:danger] = Message.unauthorized_user
     redirect_to login_url
   end
 end

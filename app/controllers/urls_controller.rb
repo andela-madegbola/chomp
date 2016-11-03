@@ -15,7 +15,7 @@ class UrlsController < ApplicationController
       url.update_attribute(:clicks, url.clicks)
       redirect_to url.target
     else
-      redirect_to root_path, alert: inactive_link
+      redirect_to root_path, alert: Message.inactive_link
     end
   end
 
@@ -27,16 +27,17 @@ class UrlsController < ApplicationController
 
   def update
     @url.update(url_params)
-    redirect_to dashboard_path, notice: url_update_success
+    redirect_to dashboard_path, notice: Message.url_update_success
   end
 
   def destroy
     if @url.destroy
-      redirect_to dashboard_path, alert: url_deleted
+      redirect_to dashboard_path, alert: Message.url_deleted
     end
   end
 
   private
+
   def find_or_create_url(new_target)
     url = Url.find_by(target: new_target)
     if url && url.user == current_user
