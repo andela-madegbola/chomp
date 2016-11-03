@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
-  resources :users
   root 'pages#index'
+  resources :users
   get 'help'    => 'pages#help'
   get 'dashboard'    => 'pages#dashboard'
 

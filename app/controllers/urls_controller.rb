@@ -49,7 +49,6 @@ class UrlsController < ApplicationController
   end
 
   def create(new_target)
-    # binding.pry
     @url = Url.new(target: new_target)
     @url.slug = find_or_create_slug(@slug)
     @url.user_id = current_user.id if current_user
@@ -58,7 +57,6 @@ class UrlsController < ApplicationController
       current_user.total_links += 1
       current_user.update_attribute(:total_links, current_user.total_links)
     end
-    # binding.pry
   end
 
   def find_or_create_slug(slug)

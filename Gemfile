@@ -69,6 +69,12 @@ group :development, :test do
   gem 'faker', '~> 1.6', '>= 1.6.6'
 
   gem 'simplecov', '~> 0.12.0', require: false
+
+  gem 'poltergeist', '~> 1.11'
+
+  gem "selenium-webdriver", "~> 2.53", ">= 2.53.4"
+
+  gem 'phantomjs', '~> 2.1', '>= 2.1.1.0'
 end
 
 group :development do

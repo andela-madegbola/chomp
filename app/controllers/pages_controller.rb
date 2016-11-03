@@ -1,5 +1,6 @@
 class PagesController < ApplicationController
   def index
+    # binding.pry
     @popular_urls = Url.popular
     @recent_urls = Url.recent
     @influential_users = User.influential

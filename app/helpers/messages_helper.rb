@@ -1,4 +1,4 @@
-module MessageHelper
+module MessagesHelper
   def log_in_error
     "Invalid email/password combination"
   end
@@ -31,4 +31,7 @@ module MessageHelper
     "Please log in"
   end
 
+  def username_too_long
+    "Username is too long"
+  end
 end

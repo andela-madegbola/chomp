@@ -74,7 +74,7 @@ RSpec.describe UsersController do
         it "should update successfully" do
           get :update, id: user.id, user: { username: "mayor" }
 
-          expect(User.last.username).to eq "mayor"
+          expect(current_user.username).to eq "mayor"
         end
       end
 
