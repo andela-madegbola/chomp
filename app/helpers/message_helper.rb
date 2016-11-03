@@ -23,16 +23,8 @@ module MessageHelper
     "Your URL was successfully updated"
   end
 
-  def url_update_error
-    "Please review your info"
-  end
-
   def url_deleted
     "Your URL was successfully deleted"
-  end
-
-  def logged_out
-    "You have successfully logged out"
   end
 
   def unauthorized_user

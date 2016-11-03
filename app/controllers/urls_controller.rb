@@ -26,11 +26,8 @@ class UrlsController < ApplicationController
   end
 
   def update
-    if @url.update(url_params)
-      redirect_to dashboard_path, notice: url_update_success
-    else
-      flash[:alert] = url_update_error
-    end
+    @url.update(url_params)
+    redirect_to dashboard_path, notice: url_update_success
   end
 
   def destroy
@@ -52,6 +49,7 @@ class UrlsController < ApplicationController
   end
 
   def create(new_target)
+    # binding.pry
     @url = Url.new(target: new_target)
     @url.slug = find_or_create_slug(@slug)
     @url.user_id = current_user.id if current_user
@@ -60,6 +58,7 @@ class UrlsController < ApplicationController
       current_user.total_links += 1
       current_user.update_attribute(:total_links, current_user.total_links)
     end
+    # binding.pry
   end
 
   def find_or_create_slug(slug)

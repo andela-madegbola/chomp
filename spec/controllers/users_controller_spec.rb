@@ -64,7 +64,7 @@ RSpec.describe UsersController do
     end
   end
 
-  describe "GET #edit" do
+  describe "GET #update" do
     let(:user) { create(:user) }
 
     context "when user is logged in" do

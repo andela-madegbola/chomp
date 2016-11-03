@@ -5,5 +5,6 @@ FactoryGirl.define do
     clicks 0
     user nil
     title "Title not found"
+    status true
   end
 end
