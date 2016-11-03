@@ -1,14 +1,11 @@
 Rails.application.routes.draw do
-  resources :users
   root 'pages#index'
+  resources :users
   get 'help'    => 'pages#help'
   get 'dashboard'    => 'pages#dashboard'
 
   get 'about'   => 'pages#about'
   get 'contact' => 'pages#contact'
-
-  get 'signup'  => 'users#new'
-  post "/users" => "users#create"
 
   get    'login'   => 'sessions#new'
   post   'login'   => 'sessions#create'

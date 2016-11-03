@@ -19,12 +19,16 @@ gem 'bootstrap-sass-extras'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
+
+# gem 'jquery-ui-rails', '~> 5.0', '>= 5.0.5'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0', group: :doc
+
+# gem 'jquery-turbolinks'
 
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
@@ -33,12 +37,12 @@ gem "codeclimate-test-reporter", group: :test, require: nil
 
 gem 'mechanize', '~> 2.7', '>= 2.7.5'
 
-gem 'will_paginate'
-
 gem 'will_paginate-bootstrap'
 
-# Use Unicorn as the app server
-# gem 'unicorn'
+
+
+
+
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
@@ -55,15 +59,25 @@ group :development, :test do
 
   gem 'activerecord-reset-pk-sequence', '~> 0.2.0'
 
-  gem 'rspec-rails', '~> 3.5'
+  gem "rspec-rails", "~> 3.5", ">= 3.5.1"
 
-  gem 'capybara', '~> 2.7', '>= 2.7.1'
+  gem "capybara", "~> 2.8", ">= 2.8.1"
 
   gem 'factory_girl_rails', '~> 4.7'
 
   gem 'shoulda-matchers', '~> 3.1', '>= 3.1.1'
 
   gem 'faker', '~> 1.6', '>= 1.6.6'
+
+  gem 'simplecov', '~> 0.12.0', require: false
+
+  gem "selenium-webdriver", "~> 2.53", ">= 2.53.4"
+
+  gem "database_cleaner", "~> 1.5", ">= 1.5.3"
+
+  gem "phantomjs", "~> 2.1", ">= 2.1.1.0", require: "phantomjs/poltergeist"
+
+  gem "poltergeist", "~> 1.10"
 end
 
 group :development do

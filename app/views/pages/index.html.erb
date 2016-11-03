@@ -1,6 +1,6 @@
-<div class="container">
-  <% provide(:title, "Home") %>
-  <h1 class="white">Shorten your Links</h1>
+<div class="container-fluid">
+  <title> Home | URL Shortening App</title>
+  <h1>Shorten your Links</h1>
   <div row>
     <%= form_tag({controller: 'urls', action: 'new'}, method: 'post', remote: true) do %>
       <% if current_user %>
@@ -17,18 +17,18 @@
       <% end %>
       <br><br><br>
       <div class="row col-sm-2 col-sm-offset-5">
-        <%= submit_tag "Chomp", { class: "btn btn-primary" }%>
+        <%= submit_tag "Chomp", :id => "bounce", :class => "btn btn-primary"%>
       </div>
     <% end %>
   </div>
-  <br><br><br>
-  <div class="row row-centered col-sm-4 col-sm-offset-4 center chompped_url">
-    <a href="" class="extlink" target="blank"><span id="chopped"></span></a>
+  <br><br><br><br>
+  <div class="text-center chompped_url link">
+    <a href="" class="extlink" id="extlink" target="blank"></a>
   </div>
 
-  <div class="ratings">
+  <div class="statistics">
     <% if Url.present? %>
-      <div class="row col-sm-12">
+      <div class="row col-sm-12 fsi-row-lg-level fsi-row-md-level">
           <%= render "pages/popular_urls" %>
           <%= render "pages/recent_urls" %>
           <%= render "pages/influential_users" %>

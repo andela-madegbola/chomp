@@ -6,17 +6,17 @@
     <div class="container">
       <div class="radio">
         <%= f.radio_button :status, true %>
-        Active
+        <p>Active</p>
       </div>
 
       <div class="radio">
         <%= f.radio_button :status, false %>
-        Inactive
+        <p>Inactive</p>
       </div>
     </div>
 
     <div class="row">
-      <%= f.submit "Save Changes", class: "btn waves-effect waves-light btn-medium brand-bg white-text regular-text" %>
+      <%= f.submit "Save Changes", class: "btn btn-primary" %>
     </div>
   <% end %>
 </div>

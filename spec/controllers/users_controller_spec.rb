@@ -31,10 +31,6 @@ RSpec.describe UsersController do
     context "when user enters correct signup details" do
       let(:create_action) { post :create, user: valid_user_params }
 
-      it "should flash success message " do
-        expect(:success).to be_present
-      end
-
       it "should redirect to home page " do
         expect(create_action).to redirect_to(root_path)
       end
@@ -44,12 +40,8 @@ RSpec.describe UsersController do
       end
     end
 
-    context "when user enters correct details" do
+    context "when user enters incorrect details" do
       let(:create_action) { post :create, user: invalid_user_params }
-
-      it "should flash success message " do
-        expect(:notice).to be_present
-      end
 
       it "should redirect to home page " do
         expect(create_action).to render_template(:new)
@@ -57,6 +49,49 @@ RSpec.describe UsersController do
 
       it "should redirect to home page " do
         expect(create_action).to have_http_status(200)
+      end
+    end
+  end
+
+  describe "GET #edit" do
+    let(:user) { create(:user) }
+    before { session[:user_id] = user.id }
+
+    it "should should render edit page" do
+      get :edit, id: user.id
+
+      expect(response).to render_template :edit
+    end
+  end
+
+  describe "GET #update" do
+    let(:user) { create(:user) }
+
+    context "when user is logged in" do
+      before { session[:user_id] = user.id }
+
+      context "when user enters valid details" do
+        it "should update successfully" do
+          get :update, id: user.id, user: { username: "mayor" }
+
+          expect(current_user.username).to eq "mayor"
+        end
+      end
+
+      context "when users enters invalid details" do
+        it "should render edit page" do
+          get :update, id: user.id, user: { username: "mayor" * 20 }
+
+          expect(response).to render_template :edit
+        end
+      end
+    end
+
+    context "when user isn't logged in" do
+      it "should redirect to login page" do
+        get :update, id: user.id, user: { username: "mayor" }
+
+        expect(response).to redirect_to login_url
       end
     end
   end

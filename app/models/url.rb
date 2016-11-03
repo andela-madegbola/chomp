@@ -3,17 +3,10 @@ class Url < ActiveRecord::Base
 
   validates_presence_of :target
   validates_presence_of :slug
-  validates_presence_of :frequency
+  validates_presence_of :title
 
-  def self.popular
-    order(frequency: :desc).limit(4)
-  end
 
-  def self.recent
-    order(updated_at: :desc).limit(4)
-  end
-
-  def self.my_urls(user)
-    where(user_id: user.id).order(frequency: :desc)
-  end
+  scope :popular, -> { order(clicks: :desc).limit(4) }
+  scope :recent, -> { order(updated_at: :desc).limit(4) }
+  scope :my_urls, -> (user) { where(user_id: user.id).order(clicks: :desc) }
 end

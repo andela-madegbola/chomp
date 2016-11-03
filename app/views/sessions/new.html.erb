@@ -11,9 +11,9 @@
       <%= label_tag :password %>
       <%= password_field_tag :password, nil, class: 'form-control' %>
 
-      <%= submit_tag "Log in", class: "btn btn-primary" %>
+      <%= submit_tag "Log In", class: "btn btn-primary" %>
     <% end %>
 
-    <p>New user? <%= link_to "Sign up now!", signup_path %></p>
+    <p>New user? <%= link_to "Sign up now!", new_user_url %></p>
   </div>
 </div>
