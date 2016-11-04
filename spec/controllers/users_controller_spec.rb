@@ -23,7 +23,10 @@ RSpec.describe UsersController do
     end
 
     context "when user enters incorrect details" do
-      let(:create_action) { post :create, user: attributes_for(:user, password: "wrong") }
+      let(:create_action) do
+        post :create,
+             user: attributes_for(:user, password: "wrong")
+      end
 
       it "should redirect to home page " do
         expect(create_action).to render_template(:new)
