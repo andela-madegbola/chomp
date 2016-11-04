@@ -11,26 +11,26 @@ RSpec.describe UsersController do
 
   describe "POST #create" do
     context "when user enters correct signup details" do
-      let(:create_action) { post :create, user: attributes_for(:user) }
+      subject { post :create, user: attributes_for(:user) }
 
       it "should redirect to home page " do
-        expect(create_action).to redirect_to(root_path)
+        expect(response).to redirect_to(root_path)
       end
 
       it "should redirect to home page " do
-        expect(create_action).to have_http_status(302)
+        expect(response).to have_http_status(302)
       end
     end
 
     context "when user enters incorrect details" do
-      let(:create_action) { post :create, user: attributes_for(:user, password: "wrong") }
+      subject { post :create, user: attributes_for(:user, password: "wrong") }
 
       it "should redirect to home page " do
-        expect(create_action).to render_template(:new)
+        expect(response).to render_template(:new)
       end
 
       it "should redirect to home page " do
-        expect(create_action).to have_http_status(200)
+        expect(response).to have_http_status(200)
       end
     end
   end
