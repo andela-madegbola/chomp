@@ -1,12 +1,11 @@
 require "rails_helper"
 
 RSpec.describe UrlsController do
-
   describe "Post #new" do
-
     context "When a new URL is entered" do
       it "should should increase url count" do
-        expect { xhr :post, :new, target: "google.com" }.to change{ Url.count }.by 1
+        expect { xhr :post, :new, target: "google.com" }.
+          to change { Url.count }.by 1
       end
     end
 
@@ -14,17 +13,18 @@ RSpec.describe UrlsController do
       before { create(:url, target: "http://google.com") }
 
       it "should fetch the existing url" do
-        expect { xhr :post, :new, target: "google.com" }.not_to change{ Url.count }
+        expect { xhr :post, :new, target: "google.com" }.
+          not_to change { Url.count }
       end
     end
 
-    context "When a registered user shorten a new url" do
+    context "When a registered user shortens a new url" do
       before do
         create(:user)
         session[:user_id] = 1
       end
 
-      it "should update its total_links" do
+      it "should update his/her total_links" do
         xhr :post, :new, target: "google.com"
 
         expect(User.first.total_links).to eq 1
@@ -56,8 +56,9 @@ RSpec.describe UrlsController do
     end
 
     it "should render the 'show' template" do
-      xhr :get, :show, id: 1
+      xhr :get, :show, id: user.id
       expect(response).to render_template(:show)
+      expect(assigns[:url]).to be_a Url
     end
 
     it "should have have http status 200" do
@@ -76,6 +77,7 @@ RSpec.describe UrlsController do
     it "should render the 'edit' template" do
       xhr :get, :edit, id: 1
       expect(response).to render_template(:edit)
+      expect(assigns[:url]).to be_a Url
     end
 
     it "should have have http status 200" do
@@ -85,7 +87,6 @@ RSpec.describe UrlsController do
   end
 
   describe "Get #navigate" do
-
     context "when the URL  is active" do
       let(:url) { create(:url) }
 
@@ -113,7 +114,8 @@ RSpec.describe UrlsController do
     end
 
     it "should delete the url" do
-      expect { delete :destroy, id: user.id }.to change{ Url.count }.by (-1)
+      expect { delete :destroy, id: user.id }.
+        to change { Url.count }.by(-1)
     end
   end
 
@@ -126,7 +128,7 @@ RSpec.describe UrlsController do
 
     context "when user enters valid target and slug" do
       it "should update successfully" do
-        get :update, id: user.id, url: {  slug:"ayo" }
+        get :update, id: user.id, url: { slug: "ayo" }
         expect(Url.last.slug).to eq "ayo"
       end
     end

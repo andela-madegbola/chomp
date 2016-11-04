@@ -1,24 +1,6 @@
 require "rails_helper"
 
 RSpec.describe UsersController do
-  let(:valid_user_params) do
-    {
-      username: "qwerty",
-      email: "qwerty@qwe.com",
-      password: "qwerty",
-      password_confirmation: "qwerty"
-    }
-  end
-
-  let(:invalid_user_params) do
-    {
-      username: "qwerty",
-      email: "qwerty@qwe.com",
-      password: "qwertyqw",
-      password_confirmation: "qwert"
-    }
-  end
-
   describe "GET #new" do
     it "should render the 'new' template " do
       get :new
@@ -29,7 +11,7 @@ RSpec.describe UsersController do
 
   describe "POST #create" do
     context "when user enters correct signup details" do
-      let(:create_action) { post :create, user: valid_user_params }
+      let(:create_action) { post :create, user: attributes_for(:user) }
 
       it "should redirect to home page " do
         expect(create_action).to redirect_to(root_path)
@@ -41,7 +23,7 @@ RSpec.describe UsersController do
     end
 
     context "when user enters incorrect details" do
-      let(:create_action) { post :create, user: invalid_user_params }
+      let(:create_action) { post :create, user: attributes_for(:user, password: "wrong") }
 
       it "should redirect to home page " do
         expect(create_action).to render_template(:new)

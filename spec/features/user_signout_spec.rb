@@ -4,7 +4,6 @@ feature "User registration" do
   let!(:user) { create(:user) }
 
   scenario "when a registered user signs out" do
-
     visit root_path
     sign_in
     click_link "Log Out"

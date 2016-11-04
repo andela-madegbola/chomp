@@ -7,13 +7,27 @@ require "spec_helper"
 require "rspec/rails"
 require "capybara/rails"
 require "capybara/rspec"
-require 'capybara/poltergeist'
+require "capybara/poltergeist"
 require "database_cleaner"
 require "selenium-webdriver"
 require "codeclimate-test-reporter"
-require 'simplecov'
+require "simplecov"
 
-SimpleCov.start 'rails'
+module Selenium
+  module WebDriver
+    module Remote
+      class Bridge
+        def execute(*args)
+          res = raw_execute(*args)["value"]
+          sleep 0.5
+          res
+        end
+      end
+    end
+  end
+end
+
+SimpleCov.start "rails"
 CodeClimate::TestReporter.start
 # Add additional requires below this line. Rails is not loaded until this point!
 
@@ -30,7 +44,7 @@ CodeClimate::TestReporter.start
 # directory. Alternatively, in the individual `*_spec.rb` files, manually
 # require only the support files necessary.
 #
-Dir[Rails.root.join('spec/support/**/*.rb')].each { |f| require f }
+Dir[Rails.root.join("spec/support/**/*.rb")].each { |f| require f }
 
 # Checks for pending migration and applies them before tests are run.
 # If you are not using ActiveRecord, you can remove this line.
@@ -79,21 +93,12 @@ RSpec.configure do |config|
   config.filter_rails_from_backtrace!
   # arbitrary gems may also be filtered via:
   # config.filter_gems_from_backtrace("gem name")
+  Capybara.register_driver :chrome do |app|
+    Capybara::Selenium::Driver.new(app, browser: :chrome)
+  end
+
+  Capybara.default_max_wait_time = 30 # seconds
   Capybara.javascript_driver = :selenium
-
-  # Capybara.register_driver :poltergeist do |app|
-  #   Capybara::Poltergeist::Driver.new(app, js_errors: false, inspector: true,
-  #                                          timeout: 60,
-  #                                          phantomjs: Phantomjs.path)
-  # end
-
-  # Capybara.register_driver :poltergeist do |app|
-  #   Capybara::Poltergeist::Driver.new(app, timeout: 1.minute, phantomjs_options: ['--load-images=no'])
-  # end
-
-  # Capybara.register_driver :selenium do |app|
-  #   Capybara::Selenium::Driver.new(app, :browser => :chrome)
-  # end
 end
 
 Shoulda::Matchers.configure do |config|

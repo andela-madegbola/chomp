@@ -1,7 +1,6 @@
 require "rails_helper"
 
 feature "User registration" do
-
   scenario "when user registration is successful" do
     visit root_path
     fill_signup_form

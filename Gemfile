@@ -71,7 +71,7 @@ group :development, :test do
 
   gem 'simplecov', '~> 0.12.0', require: false
 
-  gem "selenium-webdriver", "~> 2.53", ">= 2.53.4"
+  gem 'selenium-webdriver', '~> 2.48', '>= 2.48.1'
 
   gem "database_cleaner", "~> 1.5", ">= 1.5.3"
 

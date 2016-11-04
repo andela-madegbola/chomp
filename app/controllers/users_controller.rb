@@ -9,7 +9,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       flash[:success] = Message.logged_in
-      log_in(@user)
+      log_in @user
       redirect_to root_path
     else
       render "new"
@@ -31,10 +31,12 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:username,
-                                 :email,
-                                 :password,
-                                 :password_confirmation)
+    params.require(:user).permit(
+      :username,
+      :email,
+      :password,
+      :password_confirmation
+    )
   end
 
   def authenticate_user

@@ -19,6 +19,7 @@
         2,
         1,
         null,
+        null,
         1,
         null,
         null,
@@ -29,7 +30,6 @@
         null,
         null,
         1,
-        null,
         1,
         null,
         1,
@@ -139,9 +139,9 @@
         1,
         5,
         5,
-        0,
+        4,
         null,
-        5,
+        1,
         null,
         null,
         1,
@@ -193,6 +193,8 @@
         null,
         null,
         null,
+        null,
+        null,
         1,
         4,
         4,
@@ -209,15 +211,14 @@
         1,
         1,
         null,
-        null,
-        11,
-        11,
-        2,
+        12,
+        12,
+        3,
         null
       ],
       "/Users/TIA/Desktop/cp2/chomp/app/models/user.rb": [
         1,
-        24,
+        28,
         1,
         null,
         null,
@@ -230,7 +231,7 @@
         1,
         1,
         null,
-        11,
+        12,
         null
       ],
       "/Users/TIA/Desktop/cp2/chomp/app/services/message.rb": [
@@ -280,6 +281,6 @@
         0
       ]
     },
-    "timestamp": 1478208939
+    "timestamp": 1478288307
   }
 }
