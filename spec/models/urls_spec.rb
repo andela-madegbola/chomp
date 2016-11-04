@@ -8,7 +8,7 @@ RSpec.describe Url, type: :model do
 
   describe "popular" do
     let(:user) { create(:user) }
-    before { 10.times { |n| create(:url, user_id: user.id, clicks: n+1 ) } }
+    before { 10.times { |n| create(:url, user_id: user.id, clicks: n + 1) } }
 
     it "should return the urls by popularity" do
       expect(Url.popular.first).to eq Url.last
