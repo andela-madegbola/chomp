@@ -13,7 +13,8 @@ class PagesController < ApplicationController
 
   def dashboard
     if current_user
-      @my_urls = Url.paginate(:page => params[:page], :per_page => 5).my_urls(current_user)
+      @my_urls = Url.paginate(page: params[:page], per_page: 5).
+                 my_urls(current_user)
     else
       redirect_to root_path
     end

@@ -1,28 +1,28 @@
 module UsersHelper
   def sign_up
     visit root_path
-    click_link 'Sign Up'
+    click_link "Sign Up"
     fill_signup_form
   end
 
   def sign_in
-    click_link 'Log In'
+    click_link "Log In"
     fill_in "email", with: user.email
     fill_in "password", with: user.password
-    click_button 'Log In'
+    click_button "Log In"
   end
 
   def invalid_sign_in
-    click_link 'Log In'
+    click_link "Log In"
     fill_in "email", with: user.email
     fill_in "password", with: "wrong"
-    click_button 'Log In'
+    click_button "Log In"
   end
 
   def shorten_a_url
-    fill_in 'target', with: "google.com"
-    fill_in 'slug', with: nil
-    click_button 'Chomp'
+    fill_in "target", with: "google.com"
+    fill_in "slug", with: nil
+    click_button "Chomp"
   end
 
   def fill_signup_form
